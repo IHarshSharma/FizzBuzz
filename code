@@ -1,0 +1,177 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+
+namespace ConsoleApp5
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Welcome to the Fizz-Buzz Game");
+            Console.WriteLine("-----------------------------\n\n");
+            string Fizz = "fizz";
+            string Buzz = "buzz";
+            Console.WriteLine("Do you want to add custom words to the game?");
+            Console.WriteLine("Press 1 for YES: ");
+            Console.WriteLine("Any other key for NO: ");
+            Console.Write("ENTER: ");
+            string UserInput = Console.ReadLine();
+            if(int.Parse(UserInput)==1) 
+            {
+                Console.WriteLine(@"Provide the custom word of 'Fizz'");
+                Console.Write("ENTER: ");
+                Fizz = Console.ReadLine();
+                Console.WriteLine(@"Provide the custom word of 'Buzz'");
+                Console.Write("ENTER: ");
+                Buzz = Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("Let's Move to the game now");
+            }
+            string FizzBuzz = Fizz + Buzz;
+            Console.WriteLine("-----------------------------\n\n");
+            bool Countinue = true;
+            int Idx = 1;
+            while(Countinue)
+            {
+                if(Idx%2 == 1) 
+                {
+                    Console.WriteLine("Player 1 turn: {0}", Idx);
+                    Console.Write("Enter your input:");
+                    string Player1Input = Console.ReadLine();
+                    if (Idx % 15 == 0)
+                    {
+                        if (!string.Equals(FizzBuzz, Player1Input, StringComparison.OrdinalIgnoreCase))
+                        {
+                            Console.WriteLine("Player 1 gave wrong answer");
+                            Console.WriteLine("Player 2 WON!");
+                            Countinue = false;
+                        }
+                        else
+                        {
+                            Idx++;
+                            continue;
+                        }
+                    }
+                    else if (Idx % 5 == 0)
+                    {
+                        if (!string.Equals(Buzz, Player1Input, StringComparison.OrdinalIgnoreCase))
+                        {
+                            Console.WriteLine("Player 1 gave wrong answer");
+                            Console.WriteLine("Player 2 WON!");
+                            Countinue = false;
+                        }
+                        else
+                        {
+                            Idx++;
+                            continue;
+                        }
+                    }
+                    else if (Idx % 3 == 0)
+                    {
+                        if (!string.Equals(Fizz, Player1Input, StringComparison.OrdinalIgnoreCase))
+                        {
+                            Console.WriteLine("Player 1 gave wrong answer");
+                            Console.WriteLine("Player 2 WON!");
+                            Countinue = false;
+                        }
+                        else
+                        {
+                            Idx++;
+                            continue;
+                        }
+                    }
+
+                    else
+                    {
+                        if(String.Equals(Idx.ToString(), Player1Input, StringComparison.OrdinalIgnoreCase))
+                        {
+                            Idx++;
+                            continue;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Player 1 gave wrong answer");
+                            Console.WriteLine("Player 2 WON!");
+                            Countinue = false;
+                        }
+                    }
+                    
+                    
+                
+                }
+                else
+                {
+                    Console.WriteLine("Player 2 turn: {0}",Idx);
+                    Console.Write("Enter your input:");
+                    string Player2Input = Console.ReadLine();
+                    if (Idx % 15 == 0)
+                    {
+                        if (!string.Equals(FizzBuzz, Player2Input, StringComparison.OrdinalIgnoreCase)) {
+                            Console.WriteLine("Player 2 gave wrong answer");
+                            Console.WriteLine("Player 1 WON!");
+                            Countinue = false;
+                        }
+                        else
+                        {
+                            Idx++;
+                            continue;
+                        }
+                    }
+                    else if (Idx % 5 == 0)
+                    {
+                        if (!string.Equals(Buzz, Player2Input, StringComparison.OrdinalIgnoreCase))
+                        {
+                            Console.WriteLine("Player 2 gave wrong answer");
+                            Console.WriteLine("Player 1 WON!");
+                            Countinue = false;
+                        }
+                        else
+                        {
+                            Idx++;
+                            continue;
+                        }
+                    }
+                    else if (Idx % 3 == 0)
+                    {
+                        if (!string.Equals(Fizz, Player2Input, StringComparison.OrdinalIgnoreCase))
+                        {
+                            Console.WriteLine("Player 2 gave wrong answer");
+                            Console.WriteLine("Player 1 WON!");
+                            Countinue = false;
+                        }
+                        else
+                        {
+                            Idx++;
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        if (String.Equals(Idx.ToString(), Player2Input, StringComparison.OrdinalIgnoreCase))
+                        {
+                            Idx++;
+                            continue;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Player 2 gave wrong answer");
+                            Console.WriteLine("Player 1 WON!");
+                            Countinue = false;
+                        }
+                    }
+                    
+                 
+                }
+                
+            }
+            Console.WriteLine("GAME OVER!!!");
+
+        }
+    }
+}
